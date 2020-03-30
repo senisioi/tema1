@@ -17,7 +17,11 @@ def traceroute(ip, port):
     # trimite un mesaj UDP catre un tuplu (IP, port) 
     udp_send_sock.sendto(b'salut', (ip, port))
     
-    #asteapta un mesaj ICMP de tipul ICMP TTL exceeded messages
+    # asteapta un mesaj ICMP de tipul ICMP TTL exceeded messages
+    # in cazul nostru nu verificăm tipul de mesaj ICMP
+    # puteti verifica daca primul byte are valoarea Type == 11 
+    # https://tools.ietf.org/html/rfc792#page-5
+    # https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header
     try:
         data, addr = icmp_recv_socket.recvfrom(63535)
     except Exception as e:
