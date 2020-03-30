@@ -40,3 +40,8 @@ fake_HTTP_header = {
 # https://ipinfo.io/193.226.51.6 e echivalent cu
 raspuns = requests.get('https://ipinfo.io/widget/193.226.51.6', headers=fake_HTTP_header)
 print (raspuns.json())
+
+# pentru un IP rezervat retelei locale da bogon=True
+raspuns = requests.get('https://ipinfo.io/widget/10.0.0.1', headers=fake_HTTP_header)
+print (raspuns.json())
+
