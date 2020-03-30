@@ -1,10 +1,17 @@
 # Tema 3 
 
 ## Informații temă
-**Deadline**: **Va fi anunțat...** 
+**Deadline**: **24 aprilie 2020** 
+
+Predarea soluției se va face într-un repository de github în două feluri: 1) adăugați sursele modificate sau folosite în directorul `src`; 2) modificați template-ul [Rezolvare.md](https://github.com/senisioi/tema3/blob/master/Rezolvare.md) și completați raportul cu cerințele de acolo.
+
+Pentru a vă înscrie folosiți acest link: [https://classroom.github.com/g/s0wLIpwC](https://classroom.github.com/g/s0wLIpwC)
+Până pe **10 Aprilie** trebuie să formați echipele iar deadline-ul este în săptămâna de după vacanță.
 
 Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 10% din nota finală de laborator.
-Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
+Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame` și `git-quick-stats -a`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
+
+
 ### Barem
 1. **Traceroute** - 25%
 2. **Reliable UDP** - 75%
@@ -14,7 +21,6 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
     - 25% implementare calcul checksum si verificare la destinație
     - 25% [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
     - 25% [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) variabil, random între 1 și 5
-
 
 
 ## Cerințe temă 
