@@ -1,7 +1,7 @@
 # Tema 3 
 
 ## Informații temă
-**Deadline**: **10 aprilie** 
+**Deadline**: **Va fi anunțat...** 
 
 Tema se va rezolva în echipe de maxim trei persoane iar punctajul temei este 10% din nota finală de laborator.
 Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
