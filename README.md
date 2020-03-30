@@ -9,7 +9,7 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
 1. **Traceroute** - 25%
 2. **Reliable UDP** - 75%
     - testarea este obligatorie folosind containerele emitator si receptor
-    - obligatoriu să trimiteți un fișier de cel puțin 100 KB, ex: `/elocal/capitolul3/layers.jpg` de la emițător la receptor
+    - obligatoriu să transferați un fișier de cel puțin 100 KB, ex: `/elocal/capitolul3/layers.jpg` de la emițător la receptor
     - obligatoriu să verificați că fișierul trimis a ajuns integru; puteți face acest lucru salvându-l tot în `/elocal` și comparându-l cu cel trimis inițial
     - 25% implementare calcul checksum si verificare la destinație
     - 25% [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
@@ -25,13 +25,15 @@ Traceroute este o metodă prin care putem urmări prin ce noduri (routere) trece
 În funcție de IP-urile acestor noduri, putem afla țările sau regiunile prin care trec pachetele.
 Înainte de a implementa tema, citiți explicația felului în care funcționează [traceroute prin UDP](https://www.slashroot.in/how-does-traceroute-work-and-examples-using-traceroute-command). 
 
-Modificați fișierul [tema3/src/traceroute.py]() pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara (care sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-urile unor site-uri din Asia, Africa și Australia. Căutați site-uri cu extensia (.cn, .za, .au etc) și folosiți IP-urile acestora.
+Modificați fișierul [tema3/src/traceroute.py](https://github.com/senisioi/tema3/blob/master/src/traceroute.py) pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara (care sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-urile unor site-uri din Asia, Africa și Australia căutând site-uri cu extensia (.cn, .za, .au etc) și folosind IP-urile acestora.
 
 
 ### 2. Reliable UDP
 Pentru a transmite date în mod sigur (reliable), avem nevoie de implementarea unor mecanisme de confirmare a datelor transmise. Putem folosi principiul [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) - se așteaptă o confirmare după fiecare mesaj trimis, dar asta ar însemna că rețeaua nu este folosită în timp ce un emițător așteaptă confirmarea.  Cealaltă opțiune este să trimite o secvență de pachete unul după altul folosind un principiu de [Fereastră Glisantă / Sliding Window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/), caz în care putem aștepta confirmări pentru mai multe pachete simultan. 
 
 Protocolul TCP implementează un mecanism de fereastră glisantă, dar prin 3-way handshake, metodele de congestion control, cele de flow control și opțiunile sale, nu oferă neapărat o metodă de transmitere rapidă a datelor, ci una prin care datele sunt transmise în mod sigur (reliable). Scopul acestui exercițiu este să implementați un protocol de transport care să ofere garanția trimiterii mesajului de la un emițător la un receptor folosind UDP și în același timp să obțineți un mecanism prin care datele pot fi transmise mai rapid decât prin TCP într-un mod sigur. Mesajele sunt trasmise unilateral dinspre un emițător spre un receptor. Un astfel de protocol ar putea fi folosit, spre exemplu, pentru file sharing (ex. torrent) sau live streaming.
+
+Aveți deja câteva bucăți de cod care vă pot ajuta în [tema3/src/emitator.py](https://github.com/senisioi/tema3/blob/master/src/emitator.py) și [tema3/src/receptor.py](https://github.com/senisioi/tema3/blob/master/src/receptor.py). Va trebui în primă fază să implementați secțiunile unde scrie TODO apoi celelalte specificații ale protocolului.
 
 Receptorul trimite următoarele informații emițătorului:
 
@@ -49,6 +51,7 @@ Pentru a testa protocolul rulați în folosind docker programele emitator si rec
 # asigurati-va ca aveti ultimele modificari de pe github
 git fetch --all
 git reset --hard origin/2020
+git pull --recurse-submodules
 
 # pentru a da docker-compose up -d este important să ne aflăm 
 # în tema3
@@ -56,9 +59,10 @@ cd computer-networks/tema3
 docker-compose up -d
 
 # pornim receptorul
-docker-compose exec receptor bash -c "python3 /elocal/tema3/src/emitator.py"
+docker-compose exec emitator bash -c "python3 /elocal/tema3/src/receptor.py -p 10000 -f $fisier_de_scris"
+
 # pornim emitatorul
-docker-compose exec emitator bash -c "python3 /elocal/tema3/src/emitator.py"
+docker-compose exec receptor bash -c "python3 /elocal/tema3/src/emitator.py -a $IP_receptor -p 10000 -f $fisier"
 
 # vedem ce printeaza fiecare container
 docker-compose logs emitator
