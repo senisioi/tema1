@@ -3,7 +3,7 @@
 ## Informații temă
 **Deadline**: **Va fi anunțat...** 
 
-Tema se va rezolva în echipe de maxim trei persoane iar punctajul temei este 10% din nota finală de laborator.
+Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 10% din nota finală de laborator.
 Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
 ### Barem
 1. **Traceroute** - 25%
@@ -23,7 +23,7 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
 
 Traceroute este o metodă prin care putem urmări prin ce noduri (routere) trece un pachet pentru a ajunge la destinație.
 În funcție de IP-urile acestor noduri, putem afla țările sau regiunile prin care trec pachetele.
-Înainte de a implementa tema, citiți explicația felului în care funcționează [traceroute prin UDP](https://www.slashroot.in/how-does-traceroute-work-and-examples-using-traceroute-command). 
+Înainte de a implementa tema, citiți explicația felului în care funcționează [traceroute prin UDP](https://www.slashroot.in/how-does-traceroute-work-and-examples-using-traceroute-command). Pe scurt, pentru fiecare mesaj UDP care este în tranzit către destinație, dar pentru care TTL (Time to Live) expiră, senderul primește de la router un mesaj [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header) de tipul [Time Exceeded TTL expired in transit](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Time_exceeded).
 
 Modificați fișierul [tema3/src/traceroute.py](https://github.com/senisioi/tema3/blob/master/src/traceroute.py) pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara (care sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-urile unor site-uri din Asia, Africa și Australia căutând site-uri cu extensia (.cn, .za, .au etc) și folosind IP-urile acestora.
 
