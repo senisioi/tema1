@@ -54,14 +54,10 @@ Emițătorul trimite 3 tipuri de mesaje:
 
 Pentru a testa protocolul rulați în folosind docker programele emitator si receptor:
 ```bash
-# asigurati-va ca aveti ultimele modificari de pe github
-git fetch --all
-git reset --hard origin/2020
-git pull --recurse-submodules
 
 # pentru a da docker-compose up -d este important să ne aflăm 
 # în tema3
-cd computer-networks/tema3
+cd repository-cu-tema-3
 docker-compose up -d
 
 # pornim receptorul
