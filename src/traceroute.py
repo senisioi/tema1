@@ -22,6 +22,7 @@ def traceroute(ip, port):
     # puteti verifica daca primul byte are valoarea Type == 11 
     # https://tools.ietf.org/html/rfc792#page-5
     # https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header
+    addr = 'done!'
     try:
         data, addr = icmp_recv_socket.recvfrom(63535)
     except Exception as e:
