@@ -19,8 +19,8 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
     - obligatoriu să transferați un fișier de cel puțin 100 KB, ex: `/elocal/capitolul3/layers.jpg` de la emițător la receptor
     - obligatoriu să verificați că fișierul trimis a ajuns integru; puteți face acest lucru salvându-l tot în `/elocal` și comparându-l cu cel trimis inițial
     - 25% implementare calcul checksum si verificare la destinație
-    - 25% [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
-    - 25% [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) variabil, random între 1 și 5
+    - 25% fie implementati [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
+    - 50% fie implementati [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) go-back-n sau selective repeat, cu window random între 1 și 5
 
 
 ## Cerințe temă 
