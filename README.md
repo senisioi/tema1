@@ -106,7 +106,7 @@ Ex. struct:
 seq_nr = 11
 checksum = 0
 spf = 0b100 # seteaza flag S = 1
-spf_zero << 13 # muta cei trei biti cu 13 pozitii la stanga
+spf_zero = spf << 13 # muta cei trei biti cu 13 pozitii la stanga
 mesaj = b'salut'
 header = struct.pack('!LHH', seq_nr, checksum, spf_zero)
 de_trimis = header + mesaj
