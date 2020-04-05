@@ -30,6 +30,15 @@ def traceroute(ip, port):
     print (addr)
     return addr
 
+'''
+ Exercitiu hackney carriage (optional)!
+    e posibil ca ipinfo sa raspunda cu status code 429 Too Many Requests
+    cititi despre campul X-Forwarded-For din antetul HTTP
+        https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/
+    si setati-l o valoare in asa fel incat
+    sa puteti trece peste sistemul care limiteaza numarul de cereri/zi
+'''
+
 # exemplu de request la IP info pentru a
 # obtine informatii despre localizarea unui IP 
 fake_HTTP_header = {
