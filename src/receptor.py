@@ -6,8 +6,6 @@ import logging
 
 logging.basicConfig(format = u'[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s', level = logging.NOTSET)
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, proto=socket.IPPROTO_UDP)
-
 def main():
     parser = ArgumentParser(usage=__file__ + ' '
                                              '-p/--port PORT'
@@ -27,6 +25,8 @@ def main():
     args = vars(parser.parse_args())
     port = args['port']
     fisier = args['fisier']
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, proto=socket.IPPROTO_UDP)
 
     adresa = '0.0.0.0'
     server_address = (adresa, port)

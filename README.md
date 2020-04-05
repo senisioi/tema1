@@ -1,10 +1,17 @@
 # Tema 3 
 
 ## Informații temă
-**Deadline**: **Va fi anunțat...** 
+**Deadline**: **24 aprilie 2020** 
 
-Tema se va rezolva în echipe de maxim trei persoane iar punctajul temei este 10% din nota finală de laborator.
-Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
+Predarea soluției se va face într-un repository de github în două feluri: 1) adăugați sursele modificate sau folosite în directorul `src`; 2) modificați template-ul [Rezolvare.md](https://github.com/senisioi/tema3/blob/master/Rezolvare.md) și completați raportul cu cerințele de acolo.
+
+Pentru a vă înscrie folosiți acest link: [https://classroom.github.com/g/s0wLIpwC](https://classroom.github.com/g/s0wLIpwC)
+Până pe **10 Aprilie** trebuie să formați echipele iar deadline-ul este în săptămâna de după vacanță.
+
+Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 10% din nota finală de laborator.
+Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame` și `git-quick-stats -a`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
+
+
 ### Barem
 1. **Traceroute** - 25%
 2. **Reliable UDP** - 75%
@@ -12,9 +19,8 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
     - obligatoriu să transferați un fișier de cel puțin 100 KB, ex: `/elocal/capitolul3/layers.jpg` de la emițător la receptor
     - obligatoriu să verificați că fișierul trimis a ajuns integru; puteți face acest lucru salvându-l tot în `/elocal` și comparându-l cu cel trimis inițial
     - 25% implementare calcul checksum si verificare la destinație
-    - 25% [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
-    - 25% [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) variabil, random între 1 și 5
-
+    - 25% fie implementati [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
+    - 50% fie implementati [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) go-back-n sau selective repeat, cu window random între 1 și 5
 
 
 ## Cerințe temă 
@@ -23,9 +29,9 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
 
 Traceroute este o metodă prin care putem urmări prin ce noduri (routere) trece un pachet pentru a ajunge la destinație.
 În funcție de IP-urile acestor noduri, putem afla țările sau regiunile prin care trec pachetele.
-Înainte de a implementa tema, citiți explicația felului în care funcționează [traceroute prin UDP](https://www.slashroot.in/how-does-traceroute-work-and-examples-using-traceroute-command). 
+Înainte de a implementa tema, citiți explicația felului în care funcționează [traceroute prin UDP](https://www.slashroot.in/how-does-traceroute-work-and-examples-using-traceroute-command). Pe scurt, pentru fiecare mesaj UDP care este în tranzit către destinație, dar pentru care TTL (Time to Live) expiră, senderul primește de la router un mesaj [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header) de tipul [Time Exceeded TTL expired in transit](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Time_exceeded).
 
-Modificați fișierul [tema3/src/traceroute.py](https://github.com/senisioi/tema3/blob/master/src/traceroute.py) pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara (care sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-urile unor site-uri din Asia, Africa și Australia căutând site-uri cu extensia (.cn, .za, .au etc) și folosind IP-urile acestora.
+Modificați fișierul [tema3/src/traceroute.py](https://github.com/senisioi/tema3/blob/master/src/traceroute.py) pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara (care sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-uri din Asia, Africa și Australia căutând site-uri cu extensia .cn, .za, .au. Folositi IP-urile acestora.
 
 
 ### 2. Reliable UDP
@@ -48,14 +54,10 @@ Emițătorul trimite 3 tipuri de mesaje:
 
 Pentru a testa protocolul rulați în folosind docker programele emitator si receptor:
 ```bash
-# asigurati-va ca aveti ultimele modificari de pe github
-git fetch --all
-git reset --hard origin/2020
-git pull --recurse-submodules
 
 # pentru a da docker-compose up -d este important să ne aflăm 
 # în tema3
-cd computer-networks/tema3
+cd repository-cu-tema-3
 docker-compose up -d
 
 # pornim receptorul
@@ -104,7 +106,7 @@ Ex. struct:
 seq_nr = 11
 checksum = 0
 spf = 0b100 # seteaza flag S = 1
-spf_zero << 13 # muta cei trei biti cu 13 pozitii la stanga
+spf_zero = spf << 13 # muta cei trei biti cu 13 pozitii la stanga
 mesaj = b'salut'
 header = struct.pack('!LHH', seq_nr, checksum, spf_zero)
 de_trimis = header + mesaj
