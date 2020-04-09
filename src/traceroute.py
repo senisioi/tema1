@@ -13,13 +13,13 @@ def traceroute(ip, port):
     # setam TTL in headerul de IP pentru socketul de UDP
     TTL = 64
     udp_send_sock.setsockopt(socket.IPPROTO_IP, socket.IP_TTL, TTL)
-    
-    # trimite un mesaj UDP catre un tuplu (IP, port) 
+
+    # trimite un mesaj UDP catre un tuplu (IP, port)
     udp_send_sock.sendto(b'salut', (ip, port))
-    
+
     # asteapta un mesaj ICMP de tipul ICMP TTL exceeded messages
     # in cazul nostru nu verificăm tipul de mesaj ICMP
-    # puteti verifica daca primul byte are valoarea Type == 11 
+    # puteti verifica daca primul byte are valoarea Type == 11
     # https://tools.ietf.org/html/rfc792#page-5
     # https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header
     addr = 'done!'
@@ -38,10 +38,13 @@ def traceroute(ip, port):
         https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/
     si setati-l o valoare in asa fel incat
     sa puteti trece peste sistemul care limiteaza numarul de cereri/zi
+
+    Alternativ, puteti folosi ip-api (documentatie: https://ip-api.com/docs/api:json).
+    Acesta permite trimiterea a 45 de query-uri de geolocare pe minut.
 '''
 
 # exemplu de request la IP info pentru a
-# obtine informatii despre localizarea unui IP 
+# obtine informatii despre localizarea unui IP
 fake_HTTP_header = {
                     'referer': 'https://ipinfo.io/',
                     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36'
