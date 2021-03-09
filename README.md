@@ -43,7 +43,7 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
 
 
 ### 1. DNS over HTTPS
-Cloudflare oferă un serviciu DoH care ruleaza pe IP-ul [1.1.1.1](https://blog.cloudflare.com/announcing-1111/). Urmăriți [aici documentația](https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/) pentru request-uri de tip GET către cloudflare-dns și scrieți o funcție care returnează adresa IP pentru un nume dat ca parametru. Indicații: setați header-ul cu {'accept': 'application/dns-json'}. Vezi un exemplu de request HTTP din python în [Capitolul 2](https://github.com/senisioi/computer-networks/tree/2021/capitolul2#https)
+Cloudflare oferă un serviciu DoH care ruleaza pe IP-ul [1.1.1.1](https://blog.cloudflare.com/announcing-1111/). Urmăriți [aici documentația](https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/) pentru request-uri de tip GET către cloudflare-dns și scrieți o funcție care returnează adresa IP pentru un nume dat ca parametru. Indicații: setați header-ul cu `{'accept': 'application/dns-json'}`. Vezi un exemplu de request HTTP din python în [Capitolul 2](https://github.com/senisioi/computer-networks/tree/2021/capitolul2#https).
 
 
 
