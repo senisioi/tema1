@@ -20,23 +20,23 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
 
 ### **DNS over HTTPS** - 10%
 
-    - rezolvarea se punctează doar dacă completați codul sau alte comentarii în fișierul Rezolvare.md
+- rezolvarea se punctează doar dacă completați codul sau alte comentarii în fișierul Rezolvare.md
 
 ### **Traceroute** - 40%
 
-    - rezolvarea se punctează doar dacă completați output-ul codului sau alte comentarii în fișierul Rezolvare.md
-    - 5p. apelați un API prin care sa obțineți automat informația legată de localizarea adreselor
-    - 5p. prezentați rezultate pentru IP-uri de pe continente diferite
+- rezolvarea se punctează doar dacă completați output-ul codului sau alte comentarii în fișierul Rezolvare.md
+- 5p. apelați un API prin care sa obțineți automat informația legată de localizarea adreselor
+- 5p. prezentați rezultate pentru IP-uri de pe continente diferite
 
 ### **Reliable UDP** - 50%
 
-    - rezolvarea se punctează doar dacă prezentați un output folosind containerele emitator si receptor; nu se va acorda punctaj intermediar fără un exemplu de execuție cu container
-    - 1p. transferați un fișier de cel puțin 100 KB de la emițător la receptor
-    - 2p. verificați dacă fișierul trimis a ajuns integru; scrieți un script de python care verifică dacă două fișiere sunt identice; verificați fișierul trimis cu fișiserul primit (hint: puteți salva fișierele în /elocal și verificarea se poate face în afara containerului de docker)
-    - 2p. implementare calcul checksum si verificarea pachetului la destinație
-    - 1p. implementarea unui timeout adaptiv în funcție de durata de confirmare a unui pachet
-    - 2p. dacă implementați [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
-    - sau 4p. dacă implementați în loc de stop and wait, un algoritm [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) go-back-n sau selective repeat, cu window random între 1 și 5, la fiecare transmisie
+- rezolvarea se punctează doar dacă prezentați un output folosind containerele emitator si receptor; nu se va acorda punctaj intermediar fără un exemplu de execuție cu container
+- 1p. transferați un fișier de cel puțin 100 KB de la emițător la receptor
+- 2p. verificați dacă fișierul trimis a ajuns integru; scrieți un script de python care verifică dacă două fișiere sunt identice; verificați fișierul trimis cu fișiserul primit (hint: puteți salva fișierele în /elocal și verificarea se poate face în afara containerului de docker)
+- 2p. implementare calcul checksum si verificarea pachetului la destinație
+- 1p. implementarea unui timeout adaptiv în funcție de durata de confirmare a unui pachet
+- 2p. dacă implementați [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
+- sau 4p. dacă implementați în loc de stop and wait, un algoritm [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) go-back-n sau selective repeat, cu window random între 1 și 5, la fiecare transmisie
 
 
 ## Cerințe 
