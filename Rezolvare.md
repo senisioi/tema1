@@ -1,6 +1,16 @@
 # Soluție
 
-## 1. Traceroute
+## 1. DNS over HTTPS
+Am implementat funcția aici:
+```python
+print("你好")
+```
+iar aici e un exemplu de execuție
+```python
+print("你好吗")
+```
+
+## 2. Traceroute
 
 Am implementat soluția iar aici este output-ul:
 
@@ -32,7 +42,7 @@ IP3N - Oraș, Regiune, Țară
 ```
 
 
-## 2. Reliable UDP
+## 3. Reliable UDP
 
 ### Emițător - mesaje de logging
 Rulăm `docker-compose logs emitator` și punem rezultatul aici:
