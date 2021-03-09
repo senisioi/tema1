@@ -189,7 +189,7 @@ Când mesajul este receptat, se refac toți pașii începând cu pasul 3. În ur
 - **S** - atunci când emițătorul inițializează o conexiune, trimite un sequence number aleatoriu și marchează primul bit cu 1
 - **P** - atunci când emițătorul trimite un mesaj cu date, marchează al doilea bit cu 1
 - **F** - atunci când emițătorul îl informează pe receptor că s-a încheiat transmisia, trimite un mesaj cu al treilea bit setat 1 
-**zeros** - 13 zerori pentru padding pana la finalul randului de 32 de biți 
+- **zeros** - 13 zerori pentru padding pana la finalul randului de 32 de biți 
 
 ##### Payload / Data
 Octeții care vor fi trimiși ca mesaj de la emițător la receptor, maxim 1400 de octeți.
