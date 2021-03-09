@@ -19,14 +19,17 @@ Veți fi evaluați individual în funcție de commit-uri în repository prin `gi
 ## Barem
 
 ### **DNS over HTTPS** - 10%
+
     - rezolvarea se punctează doar dacă completați codul sau alte comentarii în fișierul Rezolvare.md
 
 ### **Traceroute** - 40%
+
     - rezolvarea se punctează doar dacă completați output-ul codului sau alte comentarii în fișierul Rezolvare.md
     - 5p. apelați un API prin care sa obțineți automat informația legată de localizarea adreselor
     - 5p. prezentați rezultate pentru IP-uri de pe continente diferite
 
 ### **Reliable UDP** - 50%
+
     - rezolvarea se punctează doar dacă prezentați un output folosind containerele emitator si receptor; nu se va acorda punctaj intermediar fără un exemplu de execuție cu container
     - 1p. transferați un fișier de cel puțin 100 KB de la emițător la receptor
     - 2p. verificați dacă fișierul trimis a ajuns integru; scrieți un script de python care verifică dacă două fișiere sunt identice; verificați fișierul trimis cu fișiserul primit (hint: puteți salva fișierele în /elocal și verificarea se poate face în afara containerului de docker)
