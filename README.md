@@ -185,9 +185,10 @@ Când mesajul este receptat, se refac toți pașii începând cu pasul 3. În ur
 În cazul în care mesajul trimis ajunge la destinație iar checksum nu este 0, atunci mesajul este ignorat (emițătorul ignoră confirmarea iar receptorul ignoră segmentul).
 
 ##### Flags
-**S** - atunci când emițătorul inițializează o conexiune, trimite un sequence number aleatoriu și marchează primul bit cu 1
-**P** - atunci când emițătorul trimite un mesaj cu date, marchează al doilea bit cu 1
-**F** - atunci când emițătorul îl informează pe receptor că s-a încheiat transmisia, trimite un mesaj cu al treilea bit setat 1 
+
+- **S** - atunci când emițătorul inițializează o conexiune, trimite un sequence number aleatoriu și marchează primul bit cu 1
+- **P** - atunci când emițătorul trimite un mesaj cu date, marchează al doilea bit cu 1
+- **F** - atunci când emițătorul îl informează pe receptor că s-a încheiat transmisia, trimite un mesaj cu al treilea bit setat 1 
 **zeros** - 13 zerori pentru padding pana la finalul randului de 32 de biți 
 
 ##### Payload / Data
