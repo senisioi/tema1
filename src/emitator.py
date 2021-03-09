@@ -100,11 +100,21 @@ def main():
     # setam timeout pe socket in cazul in care recvfrom nu primeste nimic in 3 secunde
     sock.settimeout(3)
     try:
+        '''
+        TODO:
+        1. initializeaza conexiune cu receptor
+        2. deschide fisier, citeste segmente de octeti
+        3. trimite `window` segmente catre receptor,
+         send trebuie sa trimită o fereastră de window segmente
+         până primșete confirmarea primirii tuturor segmentelor
+        4. asteapta confirmarea segmentelor, 
+        in cazul pierderilor, retransmite fereastra sau doar segmentele lipsa
+        5. in functie de diferenta de timp dintre trimitere si receptia confirmarii,
+        ajusteaza timeout
+        6. la finalul trimiterilor, notifica receptorul ca fisierul s-a incheiat
+        '''
         ack_nr, window = connect(sock, adresa_receptor)
-        file_descriptor = open(fisier, 'rb')
-        
-        ## TODO: send trebuie sa trimită o fereastră de window segmente
-        # până primșete confirmarea primirii tuturor segmentelor
+        file_descriptor = open(fisier, 'rb')        
         segment = citeste_segment(file_descriptor)
         ack_nr, window = send(sock, adresa_receptor, seq_nr, window, segment)
         ##

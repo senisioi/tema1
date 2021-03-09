@@ -1,50 +1,67 @@
 # Tema 3 
 
 ## Informații temă
-**Deadline**: **24 aprilie 2020** 
+**Deadline**: **29 martie 2020** 
 
-Predarea soluției se va face într-un repository de github în două feluri: 1) adăugați sursele modificate sau folosite în directorul `src`; 2) modificați template-ul [Rezolvare.md](https://github.com/senisioi/tema3/blob/master/Rezolvare.md) și completați raportul cu cerințele de acolo.
+Predarea soluției se va face într-un repository de github în două feluri:
+
+1. adăugați sursele modificate sau folosite în directorul `src`
+2. modificați template-ul [Rezolvare.md](https://github.com/senisioi/tema1/blob/master/Rezolvare.md) și completați raportul cu cerințele de acolo.
+
 
 Pentru a vă înscrie folosiți acest link: [https://classroom.github.com/g/s0wLIpwC](https://classroom.github.com/g/s0wLIpwC)
 Până pe **10 Aprilie** trebuie să formați echipele iar deadline-ul este în săptămâna de după vacanță.
 
-Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 10% din nota finală de laborator.
+Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 50% din nota finală de laborator.
 Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame` și `git-quick-stats -a`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
 
 
-### Barem
-1. **Traceroute** - 25%
-2. **Reliable UDP** - 75%
-    - testarea este obligatorie folosind containerele emitator si receptor
-    - obligatoriu să transferați un fișier de cel puțin 100 KB, ex: `/elocal/capitolul3/layers.jpg` de la emițător la receptor
-    - obligatoriu să verificați că fișierul trimis a ajuns integru; puteți face acest lucru salvându-l tot în `/elocal` și comparându-l cu cel trimis inițial
-    - 25% implementare calcul checksum si verificare la destinație
-    - 25% fie implementati [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
-    - 50% fie implementati [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) go-back-n sau selective repeat, cu window random între 1 și 5
+## Barem
+
+### **DNS over HTTPS** - 10%
+    - rezolvarea se punctează doar dacă completați codul sau alte comentarii în fișierul Rezolvare.md
+
+### **Traceroute** - 40%
+    - rezolvarea se punctează doar dacă completați output-ul codului sau alte comentarii în fișierul Rezolvare.md
+    - 5p. apelați un API prin care sa obțineți automat informația legată de localizarea adreselor
+    - 5p. prezentați rezultate pentru IP-uri de pe continente diferite
+
+### **Reliable UDP** - 50%
+    - rezolvarea se punctează doar dacă prezentați un output folosind containerele emitator si receptor; nu se va acorda punctaj intermediar fără un exemplu de execuție cu container
+    - 1p. transferați un fișier de cel puțin 100 KB de la emițător la receptor
+    - 2p. verificați dacă fișierul trimis a ajuns integru; scrieți un script de python care verifică dacă două fișiere sunt identice; verificați fișierul trimis cu fișiserul primit (hint: puteți salva fișierele în /elocal și verificarea se poate face în afara containerului de docker)
+    - 2p. implementare calcul checksum si verificarea pachetului la destinație
+    - 1p. implementarea unui timeout adaptiv în funcție de durata de confirmare a unui pachet
+    - 2p. dacă implementați [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) cu window egal 0 sau 1
+    - sau 4p. dacă implementați în loc de stop and wait, un algoritm [sliding window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/) go-back-n sau selective repeat, cu window random între 1 și 5, la fiecare transmisie
 
 
-## Cerințe temă 
+## Cerințe 
 
-### 1. Traceroute
+
+### 1. DNS over HTTPS
+Cloudflare oferă un serviciu DoH care ruleaza pe IP-ul [1.1.1.1](https://blog.cloudflare.com/announcing-1111/). Urmăriți [aici documentația](https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/) pentru request-uri de tip GET către cloudflare-dns și scrieți o funcție care returnează adresa IP pentru un nume dat ca parametru. Indicații: setați header-ul cu {'accept': 'application/dns-json'}. Vezi un exemplu de request HTTP din python în [Capitolul 2](https://github.com/senisioi/computer-networks/tree/2021/capitolul2#https)
+
+
+
+### 2. Traceroute
 
 Traceroute este o metodă prin care putem urmări prin ce noduri (routere) trece un pachet pentru a ajunge la destinație.
 În funcție de IP-urile acestor noduri, putem afla țările sau regiunile prin care trec pachetele.
 Înainte de a implementa tema, citiți explicația felului în care funcționează [traceroute prin UDP](https://www.slashroot.in/how-does-traceroute-work-and-examples-using-traceroute-command). Pe scurt, pentru fiecare mesaj UDP care este în tranzit către destinație, dar pentru care TTL (Time to Live) expiră, senderul primește de la router un mesaj [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Header) de tipul [Time Exceeded TTL expired in transit](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Time_exceeded).
 
-Modificați fișierul [tema3/src/traceroute.py](https://github.com/senisioi/tema3/blob/master/src/traceroute.py) pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara (care sunt disponibile) prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-uri din Asia, Africa și Australia căutând site-uri cu extensia .cn, .za, .au. Folositi IP-urile acestora.
+Modificați fișierul `src/traceroute.py` pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara disponibile prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-uri din Asia, Africa și Australia căutând site-uri cu extensia .cn, .za, .au. Folositi IP-urile acestora și comparați rezultatul cu IP-uri din rețele locale.
+
+Urmăriți documentația pentru un API public și gratuit care oferă informații legate de locația adreselor. Hint: puteți folosi [ip2loc](https://ip2loc.com/documentation), care oferă informația gratuit pentru 15k cereri pe lună.
 
 
-### 2. Reliable UDP
-Pentru a transmite date în mod sigur (reliable), avem nevoie de implementarea unor mecanisme de confirmare a datelor transmise. Putem folosi principiul [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) - se așteaptă o confirmare după fiecare mesaj trimis, dar asta ar însemna că rețeaua nu este folosită în timp ce un emițător așteaptă confirmarea.  Cealaltă opțiune este să trimite o secvență de pachete unul după altul folosind un principiu de [Fereastră Glisantă / Sliding Window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/), caz în care putem aștepta confirmări pentru mai multe pachete simultan. 
+### 3. Reliable UDP
+Pentru a transmite date în mod sigur (reliable), avem nevoie de implementarea unor mecanisme de confirmare a datelor transmise. Putem folosi principiul [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) - se așteaptă o confirmare după fiecare mesaj trimis care nu folsește rețeaua la capacitate maximă.
+Sau putem să trimite o secvență de pachete unul după altul folosind un principiu de [Fereastră Glisantă / Sliding Window](http://www.ccs-labs.org/teaching/rn/animations/gbn_sr/), caz în care putem aștepta confirmări pentru mai multe pachete simultan. 
 
-Protocolul TCP implementează un mecanism de fereastră glisantă, dar prin 3-way handshake, metodele de congestion control, cele de flow control și opțiunile sale, nu oferă neapărat o metodă de transmitere rapidă a datelor, ci una prin care datele sunt transmise în mod sigur (reliable). Scopul acestui exercițiu este să implementați un protocol de transport care să ofere garanția trimiterii mesajului de la un emițător la un receptor folosind UDP și în același timp să obțineți un mecanism prin care datele pot fi transmise mai rapid decât prin TCP într-un mod sigur. Mesajele sunt trasmise unilateral dinspre un emițător spre un receptor. Un astfel de protocol ar putea fi folosit, spre exemplu, pentru file sharing (ex. torrent) sau live streaming.
+Protocolul TCP implementează un mecanism de fereastră glisantă, dar prin 3-way handshake, metodele de congestion control, cele de flow control și opțiunile sale, nu oferă neapărat o metodă de transmitere rapidă a datelor, ci una prin care datele sunt transmise în mod sigur (reliable). Scopul acestui exercițiu este să implementați un protocol de transport care să ofere garanția trimiterii mesajului de la un emițător la un receptor folosind UDP și în același timp să obțineți un mecanism prin care datele pot fi transmise mai rapid decât prin TCP într-un mod sigur. Mesajele sunt trasmise unilateral dinspre un emițător spre un receptor (ca pe teams). Un astfel de protocol ar putea fi folosit, spre exemplu, pentru file sharing (ex. torrent) sau live streaming.
 
-Aveți deja câteva bucăți de cod care vă pot ajuta în [tema3/src/emitator.py](https://github.com/senisioi/tema3/blob/master/src/emitator.py) și [tema3/src/receptor.py](https://github.com/senisioi/tema3/blob/master/src/receptor.py). Va trebui în primă fază să implementați secțiunile unde scrie TODO apoi celelalte specificații ale protocolului.
-
-Receptorul trimite următoarele informații emițătorului:
-
-- confirmare pentru primirea secvențelor de octeți
-- informații cu privire la cât spațiu mai are în buffer pentru primirea de noi date
+Aveți deja câteva bucăți de cod care vă pot ajuta în `src/emitator.py` și `src/receptor.py`. Codul este într-o formă nestructurată și are ca scop să vă ofere câteva sugestii de implementare.
 
 Emițătorul trimite 3 tipuri de mesaje:
 
@@ -52,19 +69,24 @@ Emițătorul trimite 3 tipuri de mesaje:
 2. mesaj cu date
 3. cerere de finalizare
 
+
+Receptorul trimite următoarele informații emițătorului:
+- confirmare pentru primirea secvențelor de octeți
+- informații cu privire la cât spațiu mai are în buffer pentru primirea de noi date
+
 Pentru a testa protocolul rulați în folosind docker programele emitator si receptor:
 ```bash
 
 # pentru a da docker-compose up -d este important să ne aflăm 
-# în tema3
+# în tema1
 cd repository-cu-tema-3
 docker-compose up -d
 
 # pornim receptorul
-docker-compose exec emitator bash -c "python3 /elocal/tema3/src/receptor.py -p 10000 -f $fisier_de_scris"
+docker-compose exec emitator bash -c "python3 /elocal/src/receptor.py -p 10000 -f $fisier_de_scris"
 
 # pornim emitatorul
-docker-compose exec receptor bash -c "python3 /elocal/tema3/src/emitator.py -a $IP_receptor -p 10000 -f $fisier"
+docker-compose exec receptor bash -c "python3 /elocal/src/emitator.py -a $IP_receptor -p 10000 -f $fisier_de_trimis"
 
 # vedem ce printeaza fiecare container
 docker-compose logs emitator
@@ -74,11 +96,12 @@ docker-compose logs receptor
 Trebuie să aveți în vedere următoarele aspecte:
 
 - emițătorul trimite mesaje către receptor și folosește implicit containerul router
-- containerul router elimină pachete pe eth0 cu probabilitate 70% și pe eth1 cu 85%
+- containerul router aplică o filtrare cu netem care corupe, reordonează, pierde și întârzie pachete (vezi `src/t1_router.sh`); pentru testarea inițială, vă recomandăm să începeți trimiterea mesajelor fără filtrare sau pe localhost, apoi să mutați codul în docker
 - există riscul ca un mesaj să nu ajungă la receptor
 - există riscul ca o confirmre să nu ajungă la emițător, atunci emițătorul care apelează  `recvfrom`, în așteptarea unei confirmări, ar trebui să seteze timeout prin `sock.settimeout`
-- există riscul ca dintr-o fereastră de 4 trimiteri (`sendto`) să se piardă un mesaj intermediar; în acest caz fie reluați transmisia întregii ferestre, fie retransmiteți doar acele segmente care s-au pierdut
+- există riscul ca dintr-o fereastră de 4 trimiteri (4 apeluri `sendto`) să se piardă un mesaj intermediar; în acest caz fie reluați transmisia întregii ferestre, fie retransmiteți doar acele segmente care s-au pierdut
 - există riscul ca pachetul să fie alterat pe parcurs
+- în cazul pierderilor, timeout va trebui ajustat corespunzător
 
 ### Specificația Reliable UDP
 
@@ -107,14 +130,16 @@ seq_nr = 11
 checksum = 0
 spf = 0b100 # seteaza flag S = 1
 spf_zero = spf << 13 # muta cei trei biti cu 13 pozitii la stanga
-mesaj = b'salut'
+mesaj = '你好'.encode('utf-8')
 header = struct.pack('!LHH', seq_nr, checksum, spf_zero)
 de_trimis = header + mesaj
 sock.sendto(de_trimis, receptor)
 ```
 
 ##### Sequence Number
-Este un număr pe 4 octeți (unsigned long integer, cod '!L'). Un emițător care dorește să trimită receptorului mesaje va incrementa acest număr în funcție de câți octeți sunt trimiși. Numărul de secvență inițial va fi ales aleatoriu între 0 și cel mai mare număr unsigned pe 32 de biți: [4,294,967,295](https://en.wikipedia.org/wiki/4,294,967,295). 
+Este un număr pe 4 octeți (unsigned long integer, cod '!L'). 
+Un emițător care dorește să trimită receptorului mesaje va incrementa acest număr în funcție de câți octeți sunt trimiși. 
+Numărul de secvență inițial va fi ales aleatoriu între 0 și cel mai mare număr unsigned pe 32 de biți: [4,294,967,295](https://en.wikipedia.org/wiki/4,294,967,295). 
 Ex:
 ```python
 # numar de secventa initial
@@ -137,6 +162,7 @@ sequence_nr_curent = sequence_nr_curent + len(mesaj)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 struct.error: 'L' format requires 0 <= number <= 4294967295
+# trebuie sa gasiti o solutie pentru asta
 ```
 
 
@@ -183,7 +209,7 @@ Mesajul de la receptor doar confirmă primirea, nu are payload.
 
 ##### Acknowledgment Number
 Este un număr pe 4 octeți (unsigned long integer, cod '!L'). 
-Când receptorul primște un mesaj de tip `S` sau `F`, se returnează ca acknowledgement number valoare sequence number + 1.
+Când receptorul primește un mesaj de tip `S` sau `F`, se returnează ca acknowledgement number valoare sequence number + 1.
 Când receptorul primește un segment de tip `P`, se returnează ca acknowledgement number valoarea acelui sequence number reprezentând capătul intervalului.
 Ex.:
 ```python
@@ -213,3 +239,9 @@ Un număr pe 2 octeți (unsigned short integer, cod 'H') prin care îl informeaz
 Dacă emițătorul primește window = 2, înseamnă că emițătorul ar trebui să execute doar două apeluri `sock.sendto()` cu date de 1400 octeți. Dacă window = 0, emițătorul trebuie să înceteze expedierea segementelor. Dacă valoarea este 1, protcolul va funcționa pe principiul [Stop and Wait](https://www.isi.edu/nsnam/DIRECTED_RESEARCH/DR_HYUNAH/D-Research/stop-n-wait.html) - se așteaptă o confirmare după fiecare mesaj trimis. Setați ca default `window = random.randint(1, 5)`.
 În cazul de față window are altă semnificație [decât la TCP](http://www.inacon.de/ph/data/TCP/Header_fields/TCP-Header-Field-Window-Size_OS_RFC-793.htm), cuantificând numărul de segmente în loc de octeți.
 
+##### Timeout Adaptiv
+Prin funcția `sock.settimeout(1)` se poate seta un timeout de o secundă atunci când
+facem apelul blocant `recvfrom`. Dacă fixăm acest timeout de o secundă, e posibil ca noi să generăm 
+retransmiteri inutile în cazurile în care rețeaua este mai lentă, ceea ce va determina încetinirea și mai mult a rețelei.
+O descriere a problemei și soluției implementate în TCP este disponibilă [aici](https://mediaplayer.pearsoncmg.com/_ph_cc_ecs_set.title.6-7_Retransmission_Timeouts__/ph/streaming/esm/tanenbaum5e_videonotes/6_7_timeouts_cn5e.m4v).
+Implementați o metodă care să seteze timeout-ul printr-o funcție de tipul SRTT - [Smoothed Round Trip Time](https://blog.catchpoint.com/2014/04/29/understanding-rtt-impact-on-tcp-retransmissions/).
