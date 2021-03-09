@@ -55,7 +55,7 @@ Traceroute este o metodă prin care putem urmări prin ce noduri (routere) trece
 
 Modificați fișierul `src/traceroute.py` pentru a afișa pentru 3 IP-uri diferite: Orașul, Regiunea și Țara disponibile prin care trece mesajul vostru pentru a ajunge la destinație. Folosiți IP-uri din Asia, Africa și Australia căutând site-uri cu extensia .cn, .za, .au. Folositi IP-urile acestora și comparați rezultatul cu IP-uri din rețele locale.
 
-Urmăriți documentația pentru un API public și gratuit care oferă informații legate de locația adreselor. Hint: puteți folosi [ip2loc](https://ip2loc.com/documentation), care oferă informația gratuit pentru 15k cereri pe lună.
+Urmăriți documentația pentru un API public și gratuit care oferă informații legate de locația adreselor. Hint: puteți folosi [ip2loc](https://ip2loc.com/documentation), care oferă informația gratuit pentru 15k cereri pe lună. Trebuie doar să vă faceți un cont și să obțineți o cheie de access pentru requests.
 
 
 ### 3. Reliable UDP
