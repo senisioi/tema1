@@ -1,4 +1,4 @@
-# Tema 3 
+# Tema 1
 
 ## Informații temă
 **Deadline**: **29 martie 2020** 
@@ -9,7 +9,7 @@ Predarea soluției se va face într-un repository de github în două feluri:
 2. modificați template-ul [Rezolvare.md](https://github.com/senisioi/tema1/blob/master/Rezolvare.md) și completați raportul cu cerințele de acolo.
 
 
-Pentru a vă înscrie folosiți acest link: [____](___)
+Pentru a vă înscrie folosiți acest link: [https://classroom.github.com/g/ITy9_qUL](https://classroom.github.com/g/ITy9_qUL)
 
 Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 40% din nota finală de laborator.
 Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame` și `git-quick-stats -a`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
