@@ -10,7 +10,6 @@ Predarea soluției se va face într-un repository de github în două feluri:
 
 
 Pentru a vă înscrie folosiți acest link: [https://classroom.github.com/g/s0wLIpwC](https://classroom.github.com/g/s0wLIpwC)
-Până pe **_________** trebuie să formați echipele iar deadline-ul este în săptămâna de după vacanță.
 
 Tema se va rezolva în echipe de maxim două persoane iar punctajul temei este 40% din nota finală de laborator.
 Veți fi evaluați individual în funcție de commit-uri în repository prin `git blame` și `git-quick-stats -a`. Doar utilizatorii care apar cu modificări în repository vor fi punctați (în funcție de modificările pe care le fac).
