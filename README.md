@@ -107,7 +107,7 @@ Trebuie să aveți în vedere următoarele aspecte:
 
 ### Specificația Reliable UDP
 
-Vom construi două anteturi noi, unul pentru emițător și unul pentru receptor și vom folosi folosi librăria struct pentru a adăgua în cadrul unui mesaj UDP câteva câmpuri noi.
+Vom construi două anteturi noi, unul pentru emițător și unul pentru receptor și vom folosi folosi librăria struct pentru a adăgua în cadrul unui mesaj UDP câteva câmpuri noi. Aici sunt câteva [exemple de folosire a librăriei struct](https://github.com/senisioi/computer-networks/tree/2021/capitolul1#ctypes).
 
 #### Header mesaj de la emițător:
 ```
