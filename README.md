@@ -1,7 +1,7 @@
 # Tema 1
 
 ## Informații temă
-**Deadline**: **29 martie 2020** 
+**Deadline**: **5 aprilie 2021** 
 
 Predarea soluției se va face într-un repository de github în două feluri:
 
